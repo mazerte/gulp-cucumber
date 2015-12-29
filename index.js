@@ -30,6 +30,11 @@ module.exports = function(options) {
     var format = options.format || 'pretty';
     runOptions.push(format);
 
+    if (options.coffee) {
+        runOptions.push('--compiler');
+        runOptions.push('coffee:coffee-script/register');
+    }
+
     if (options.tags) {
         var tags = util.isArray(options.tags) ? options.tags : [options.tags];
 
